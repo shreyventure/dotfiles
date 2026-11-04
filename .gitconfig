@@ -9,10 +9,12 @@
     name = Shreyas Shrawage
     email = shreyas.shrawage2000@gmail.com
 
-# --- Work email for neon-xyz ---
-# Codespaces clones the repo to /workspaces/<repo-name>.
-[includeIf "gitdir:/workspaces/neon-xyz/"]
+# --- Work email for any repo in the neon-xyz GitHub org ---
+# Matched by remote URL, so it works wherever the repo is cloned
+# (locally or in Codespaces at /workspaces/<repo-name>). Needs git >= 2.36.
+[includeIf "hasconfig:remote.*.url:https://github.com/neon-xyz/**"]
     path = ~/.gitconfig-private
-# Local clone on the Mac (case-insensitive match).
-[includeIf "gitdir/i:~/Neon/neon/"]
+[includeIf "hasconfig:remote.*.url:git@github.com:neon-xyz/**"]
+    path = ~/.gitconfig-private
+[includeIf "hasconfig:remote.*.url:ssh://git@github.com/neon-xyz/**"]
     path = ~/.gitconfig-private
