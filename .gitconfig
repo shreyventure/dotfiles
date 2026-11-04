@@ -1,0 +1,8 @@
+# --- Global Default (For all your public repos) ---
+[user]
+    name = Shreyas Shrawage
+    email = shreyas.shrawage2000@gmail.com
+
+# --- Conditional Switch (For your specific private repo) ---
+[includeIf "gitdir:**/workspaces/neon-xyz/**"]
+    path = .gitconfig-private
