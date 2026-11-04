@@ -1,8 +1,18 @@
+# Machine-specific settings (e.g. whatever Codespaces had in ~/.gitconfig before
+# install.sh ran). Included first so everything below overrides it.
+# Silently ignored if the file doesn't exist.
+[include]
+    path = ~/.gitconfig.local
+
 # --- Global Default (For all your public repos) ---
 [user]
     name = Shreyas Shrawage
     email = shreyas.shrawage2000@gmail.com
 
-# --- Conditional Switch (For your specific private repo) ---
-[includeIf "gitdir:**/workspaces/neon-xyz/**"]
-    path = .gitconfig-private
+# --- Work email for neon-xyz ---
+# Codespaces clones the repo to /workspaces/<repo-name>.
+[includeIf "gitdir:/workspaces/neon-xyz/"]
+    path = ~/.gitconfig-private
+# Local clone on the Mac (case-insensitive match).
+[includeIf "gitdir/i:~/Neon/neon/"]
+    path = ~/.gitconfig-private
